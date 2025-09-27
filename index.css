@@ -1,0 +1,550 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Meta-Auxdior.FM-35 Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Core Background System */
+    --background: 230 25% 5%;
+    --background-secondary: 230 20% 8%;
+    --background-elevated: 230 15% 12%;
+    --foreground: 210 40% 98%;
+    --foreground-muted: 215 25% 65%;
+
+    /* Music App Specific Colors */
+    --music-primary: 120 100% 40%;
+    --music-primary-glow: 120 100% 50%;
+    --music-secondary: 140 100% 45%;
+    --music-accent: 160 100% 50%;
+    --music-success: 140 100% 60%;
+    --music-warning: 35 100% 65%;
+    --music-danger: 0 100% 65%;
+
+    /* Card System */
+    --card: 230 20% 8%;
+    --card-elevated: 230 15% 12%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 230 25% 20%;
+
+    /* Glass Morphism */
+    --glass: 230 20% 8% / 0.8;
+    --glass-border: 230 25% 25% / 0.3;
+
+    /* Interactive Elements */
+    --primary: 120 100% 40%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 120 100% 50%;
+
+    --secondary: 230 15% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 230 15% 15%;
+    --muted-foreground: 215 25% 65%;
+
+    --accent: 280 100% 70%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders & Inputs */
+    --border: 230 25% 20%;
+    --input: 230 15% 12%;
+    --ring: 120 100% 40%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--music-primary)), hsl(var(--music-secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--music-primary) / 0.9), hsl(var(--music-secondary) / 0.7));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--card-elevated)));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(var(--music-primary) / 0.3), transparent 70%);
+
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--music-primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--music-primary-glow) / 0.4);
+    --shadow-card: 0 4px 20px -4px hsl(230 25% 5% / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+
+    /* Sidebar System */
+    --sidebar-background: 230 25% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 120 100% 40%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 230 15% 12%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 230 25% 20%;
+    --sidebar-ring: 120 100% 40%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: hsl(var(--background));
+    background-image: url('/src/assets/studio-bg.jpg'), var(--gradient-glow);
+    background-size: cover, 100% 100%;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+  }
+}
+
+@layer components {
+  /* Glass Morphism Effects */
+  .glass {
+    background: hsl(var(--glass));
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Music Player Specific */
+  .music-card {
+    @apply glass-card p-4 transition-all duration-300 hover:scale-105;
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .music-card:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Gradient Backgrounds */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+}
+
+/* 4-Step Intro Animation Styles */
+.intro-animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: hsl(var(--background));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out;
+  overflow: hidden;
+}
+
+.intro-animation-container.fade-out {
+  opacity: 0;
+}
+
+.intro-step {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: intro-step-enter 0.8s ease-out;
+}
+
+/* Step 1: Nexus of Quality Sounds */
+.step-1-text {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-align: center;
+  animation: step1-sequence 5s ease-in-out;
+}
+
+.glow-neon {
+  color: hsl(var(--foreground));
+  text-shadow: 
+    0 0 10px hsl(var(--music-primary) / 0.8),
+    0 0 20px hsl(var(--music-primary) / 0.6),
+    0 0 40px hsl(var(--music-primary) / 0.4),
+    0 0 80px hsl(var(--music-primary) / 0.2);
+}
+
+/* Step 2: Welcome Message */
+.step-2-text {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: step2-sequence 4s ease-in-out;
+}
+
+.pulse-text {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Step 3: OPTISYNCORE */
+.step-3 {
+  position: relative;
+}
+
+.step-3-text {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-align: center;
+  animation: step3-sequence 3s ease-in-out;
+}
+
+.glow-trademark {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--music-primary)),
+    hsl(var(--music-secondary)),
+    hsl(var(--music-accent))
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px hsl(var(--music-primary) / 0.6));
+}
+
+.sparkle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: hsl(var(--music-accent));
+  border-radius: 50%;
+  animation: sparkle-twinkle 1.5s ease-in-out infinite;
+  box-shadow: 0 0 10px hsl(var(--music-accent));
+}
+
+/* Step 4: Soundwave Transition */
+.step-4 {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--background)),
+    hsl(var(--background-secondary))
+  );
+}
+
+.soundwave-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.soundwave-bar {
+  position: absolute;
+  bottom: 0;
+  width: 2%;
+  min-height: 5%;
+  background: linear-gradient(
+    to top,
+    hsl(var(--music-primary)),
+    hsl(var(--music-secondary)),
+    hsl(var(--music-accent))
+  );
+  border-radius: 2px 2px 0 0;
+  animation: soundwave-pulse 0.8s ease-in-out infinite alternate;
+  box-shadow: 0 0 10px hsl(var(--music-primary) / 0.5);
+  transform-origin: bottom;
+}
+
+.soundwave-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 30%,
+    hsl(var(--background)) 100%
+  );
+  animation: soundwave-expand 1.5s ease-out;
+}
+
+.skip-button {
+  position: absolute !important;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 3;
+  background: hsl(var(--glass)) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--glass-border)) !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+}
+
+/* Animations */
+@keyframes intro-step-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes step1-sequence {
+  0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+  15% { opacity: 1; transform: translateY(0) scale(1); }
+  85% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-30px) scale(1.1); }
+}
+
+@keyframes step2-sequence {
+  0% { opacity: 0; transform: translateY(30px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-30px); }
+}
+
+@keyframes step3-sequence {
+  0% { opacity: 0; transform: scale(0.8); }
+  25% { opacity: 1; transform: scale(1); }
+  75% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px hsl(var(--music-primary) / 0.5);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 30px hsl(var(--music-primary) / 0.8);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes soundwave-pulse {
+  0% {
+    transform: scaleY(0.3);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes soundwave-expand {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .skip-button {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .step-1-text,
+  .step-2-text,
+  .step-3-text {
+    padding: 0 1rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--music-primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--music-primary) / 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
